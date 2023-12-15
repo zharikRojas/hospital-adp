@@ -1,14 +1,15 @@
 import { autenticar } from "../servicios/autenticacion.js";
 
+//exportamos una funcion que permite validar la autenticacion del usuario
 export async function validateAutentication(req, res){
     const username = req.body.username;
     const password = req.body.password;
     try {
-        const data = await autenticar(username, password);
+        const data = await autenticar(username, password);//obtenemos el resultado que devuelve la función autenticar
         if(data.length > 0){
-            res.status(200).send(data[0]);
+            res.status(200).send(data);
         }else{
-            res.status(404).send({error: "Usuario y/o contraseña invalidos"});
+            res.status(204).send({error: "Usuario y/o contraseña invalidos"});
         }
         
     } catch (error) {
