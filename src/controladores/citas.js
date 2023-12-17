@@ -1,4 +1,4 @@
-import { obtenerCitasMedico, obtenerCitasPaciente, asignarCitaPaciente } from "../servicios/citas.js";
+import { obtenerCitasMedico, obtenerCitasPaciente, asignarCitaPaciente, actualizarCita } from "../servicios/citas.js";
 
 export async function getCitasMedico(req,res){
     const idMedico = req.params.id;
@@ -50,6 +50,28 @@ export async function crearCitas(req,res){
         }
     } catch (error) {
         console.error("Hubo un problema al asignar la cita.");
+        res.status(500).send(error);
+    }
+}
+
+export async function updateCita(req,res){
+
+    const datosCita = {
+        id_cita: req.params.id,
+        novedad: req.body.novedad,
+        id_estadoCita: req.body.id_estadoCita
+    }
+
+    try {
+        const data = await actualizarCita(datosCita);
+        console.log(data);
+        if(data){
+            res.status(200).send("Se han acttualizado los campos correctamente");
+        }else{
+            res.status(204).send({error: "La actualización de los datos no fue exitosa."});
+        }
+    } catch (error) {
+        console.error("Ha ocurrido un error al actualizar la cita.");
         res.status(500).send(error);
     }
 }

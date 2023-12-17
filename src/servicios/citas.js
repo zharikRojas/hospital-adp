@@ -48,7 +48,6 @@ export async function asignarCitaPaciente(nuevaCita){
 
 
   try {
-    console.log("entra al try");
     console.log(nuevaCita.fechaHoraCita, nuevaCita.novedad, nuevaCita.id_especialidad, nuevaCita.id_paciente, nuevaCita.id_medico, nuevaCita.id_estadoCita);
 
     console.log("probando typeof",typeof nuevaCita.fechaHoraCita);
@@ -62,5 +61,16 @@ export async function asignarCitaPaciente(nuevaCita){
     return data;
   } catch (error) {
     console.error("Error al insertar en la base de datos");
+  }
+}
+
+export async function actualizarCita(datosCita){
+  try {
+    const data = await conexion.query(`UPDATE cita SET id_estadoCita = ${datosCita.id_estadoCita}, novedad = "${datosCita.novedad}" WHERE id_cita = ${datosCita.id_cita}`)
+    console.log(data);
+
+    return data;
+  } catch (error) {
+    console.error("Error al actualizar campos en la base de datos");
   }
 }

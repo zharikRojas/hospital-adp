@@ -2,6 +2,7 @@ import { autenticar } from "../servicios/autenticacion.js";
 
 //exportamos una funcion que permite validar la autenticacion del usuario
 export async function validateAutentication(req, res){
+    console.log(req.body);
     const username = req.body.username;
     const password = req.body.password;
     try {
@@ -9,7 +10,7 @@ export async function validateAutentication(req, res){
         if(data.length > 0){
             res.status(200).send(data);
         }else{
-            res.status(204).send({error: "Usuario y/o contraseña invalidos"});
+            res.status(401).send({error: "Usuario y/o contraseña invalidos"});
         }
         
     } catch (error) {

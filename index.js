@@ -1,5 +1,5 @@
 import { conexion } from "./config.js";
-import app, {name} from "./app.js";
+import app from "./app.js";
 
 
 app.listen(app.get("port"), ()=>{

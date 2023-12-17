@@ -8,21 +8,23 @@
 </head>
 <body>
     
-    <div class = "formulario">
+    <div id="formulario" class="formulario">
         <h1>Inicio de Sesión</h1>
-        <form method="post">
-            <div class = "username"> 
-                <input type="text" required placeholder="Nombre de usuario">
+        <form>
+            <div class="username"> 
+                <input id="username" type="text" required placeholder="Nombre de usuario">
                 
             </div>
-            <div class = "username"> 
-                <input id="contrasena" type="password" required>
-                <label>Constraseña</label>
+            <div class="username"> 
+                <input id="contrasena" type="password" required placeholder="Contraseña">
             </div>
-            <button>
-                <a href="homeMedico.html">Home Medico</a>
+            <span id="error"></span>
+            <button id="iniciarSesion" class="iniciar" type="button">
+            Iniciar Sesión
             </button>
         </form>
+        
     </div>
 </body>
+<script src="index.js"></script>
 </html>

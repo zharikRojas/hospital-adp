@@ -1,5 +1,5 @@
 import  express  from "express";
-import { getCitasMedico, getCitasPaciente, crearCitas } from "../controladores/citas.js";
+import { getCitasMedico, getCitasPaciente, crearCitas, updateCita } from "../controladores/citas.js";
 
 const citasRouter = express.Router();
 
@@ -10,5 +10,6 @@ citasRouter.get('/citas/medico/:id', getCitasMedico);
 citasRouter.get('/citas/paciente/:id', getCitasPaciente);
 
 citasRouter.post('/citas', crearCitas);
+citasRouter.post('/citas/:id',updateCita);
 
 export default citasRouter;
