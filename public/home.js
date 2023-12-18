@@ -1,7 +1,7 @@
 const api = "http://localhost:3000/api";
 const user = JSON.parse(localStorage.getItem("usuario")) || null;
 const cardWrapper = document.getElementsByClassName("card-wrapper")[0];
-console.log(cardWrapper);
+const botonAsignar = document.getElementById("agregar");
 
 if(!user){
     window.location.href= "index.html";//redireccionar 
@@ -10,13 +10,12 @@ if(!user){
 const nombreUsuario = document.getElementById("nombre-usuario");
 nombreUsuario.innerText=user.nombre;
 
-
-
 function getCitas(){
     if(user.id_rol === 1){
         getCitasMedico();
     }else if(user.id_rol === 2){
         getCitasPaciente();
+        botonAsignar.style.display = "none";
     }
 }
 
@@ -29,7 +28,6 @@ async function getCitasPaciente(){
         }});
 
     const data = await response.json();
-    console.log(data);
     mostrarCitas(data);
 }
 
@@ -42,7 +40,6 @@ async function getCitasMedico(){
         }});
 
     const data = await response.json();
-    console.log(data);
     mostrarCitas(data);
 }
 
@@ -80,6 +77,10 @@ function mostrarCitas(data){
         pNovedad.innerHTML = `<strong>Novedad: </strong> ${cita.novedad || "Sin novedad"}`;
         botonEditar.innerText = `Editar Cita`;
 
+        botonEditar.dataset.citaId = cita.id_cita;
+        botonEditar.addEventListener("click", editarCita);
+       
+        
         divContent.appendChild(h3);
         divContent.appendChild(pFecha);
         divContent.appendChild(pEspecialidad);
@@ -98,23 +99,32 @@ function mostrarCitas(data){
 function formatoFecha(fecha){
     const formattedDate = new Date(fecha);
 
-const options = {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-  hour: 'numeric',
-  minute: 'numeric',
-  second: 'numeric',
-  timeZone: 'America/Bogota'  // Set the timeZone to 'America/Bogota'
-};
+    const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        timeZone: 'America/Bogota' 
+    };
 
-const formattedString = formattedDate.toLocaleDateString('es-ES', options);
-console.log(formattedString);
-return formattedString;
+    const formattedString = formattedDate.toLocaleDateString('es-CO', options);
+    return formattedString;
 }
 
 function salir(){
     localStorage.removeItem("usuario");
     window.location.href= "index.html";//redireccionar 
+}
+function crearCita(){
+    window.location.href = "citas.html";
+}
+
+function editarCita(event){
+    const citaId = event.target.dataset.citaId;
+    
+    localStorage.setItem("citaId", citaId);
+    window.location.href = "citas.html";
 }
 getCitas();

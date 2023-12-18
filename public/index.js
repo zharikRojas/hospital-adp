@@ -9,13 +9,12 @@ if(localStorage.getItem("usuario")){
 }
 
 botonLogin.addEventListener("click",async ()=>{
-    console.log("click en boton");
+ 
     const username = usernameInput.value;
     const password = passwordInput.value;
 
     if(username !== "" && password !== ""){
         try {
-            console.log("llamar api");
         const usuario = {
             username:username,
             password: password
@@ -27,7 +26,6 @@ botonLogin.addEventListener("click",async ()=>{
             'Content-Type': 'application/json'
             }, 
             body: JSON.stringify(usuario)});
-            console.log(response);
         if (response) {
 
             const data = await response.json();
@@ -35,17 +33,13 @@ botonLogin.addEventListener("click",async ()=>{
                 spanError.innerText = "Usuario y/o contraseña incorrectos";
             }else{
                 localStorage.setItem("usuario", JSON.stringify(data[0]));
-
                 window.location.href= "home.html";//redireccionar 
             }
         }
         
         } catch (error) {
             console.log(error);
-            console.log("paso por el catch");
         }
-        
-      
 
     }else{
         console.log("username and password son requeridos");

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="formulario" class="formulario">
+        <h1><span id="accion-cita"></span> Cita</h1>
+        <form>
+            <div class="username"> 
+                <label for="comboBox-paciente"><strong>Selecciona un paciente:</strong></label>
+                <select id="comboBox-paciente">
+                    <option value="opcion1">Ninguno Seleccionado</option>
+                    
+                </select>
+            </div>
+            <div class="username"> 
+                <label><strong>Selecciona una fecha:</strong></label>
+                <input id="fecha-cita" type="datetime-local">
+            </div>
+            <div class="username"> 
+                <label for="comboBox-especialidad"><strong>Especialidad:</strong></label>
+                <select id="comboBox-especialidad">
+                    <option value="1">Medicina General</option>
+                    <option value="2">Odontología</option>
+                    <option value="3">Cardiología</option>
+                </select>
+            </div>
+            <div class="username"> 
+                <label for="medico"><strong>Medico: </strong><span id="medico"></span></label>
+            </div>
+            <div class="username"> 
+                <label for="comboBox-estado-cita"><strong>Estado Cita:</strong></label>
+                <select id="comboBox-estado-cita">
+                    <option value="1">Activa</option>
+                    <option value="2">Cancelada</option>
+                </select>
+            </div>
+            <div class="username"> 
+                <label for="novedad"><strong>Novedad</strong></label>
+                <input type="text" name="novedad" id="novedad">
+            </div>
+            
+            <span id="error"></span>
+            <button id="crear-cita" class="iniciar" type="button">
+            Guardar Cita
+            </button>
+        </form>
+        
+    </div>
+</body>
+<script src="citas.js"></script>
+</html>

@@ -1,4 +1,4 @@
-import { obtenerCitasMedico, obtenerCitasPaciente, asignarCitaPaciente, actualizarCita } from "../servicios/citas.js";
+import { obtenerCitasMedico, obtenerCitasPaciente, asignarCitaPaciente, actualizarCita, obtenerCita } from "../servicios/citas.js";
 
 export async function getCitasMedico(req,res){
     const idMedico = req.params.id;
@@ -42,9 +42,8 @@ export async function crearCitas(req,res){
 
     try {
         const data = await asignarCitaPaciente(nuevaCita);
-        console.log(data);
         if(data){
-            res.status(200).send("Se asigno la cita");
+            res.status(200).send({success: "Se asigno la cita"});
         }else{
             res.status(204).send({error: "Creacion NO existosa."});
         }
@@ -64,7 +63,7 @@ export async function updateCita(req,res){
 
     try {
         const data = await actualizarCita(datosCita);
-        console.log(data);
+        
         if(data){
             res.status(200).send("Se han acttualizado los campos correctamente");
         }else{
@@ -72,6 +71,21 @@ export async function updateCita(req,res){
         }
     } catch (error) {
         console.error("Ha ocurrido un error al actualizar la cita.");
+        res.status(500).send(error);
+    }
+}
+
+export async function getCitas(req,res){
+    const idCita = req.params.id;
+    try {
+        const data = await obtenerCita(idCita);
+        if(data.length > 0){
+            res.status(200).send(data);
+        }else{
+            res.status(204).send({error:"No se encontraron citas con ese id"});
+        }
+    } catch (error) {
+        console.error("Hubo un problema en la busqueda de citas");
         res.status(500).send(error);
     }
 }

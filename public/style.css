@@ -44,41 +44,9 @@ form .username{
     outline: none;
 }
 
-.username label{
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    color: #adadad;
-    transform: translateY(-50%);
-    font-size: 16px;
-    pointer-events: none;
-    transition: .5s;
-}
-
-.username span::before{
-    content: '';
-    position: absolute;
-    top: 40px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: rgba(128, 208, 223, 0.911);
-}
-
-
-.username input:focus ~ label,
-.username input:focus ~ label{
-    top: -5px;
-    color: rgba(128, 208, 223, 0.911)
-}
-
-.username input:focus ~ label,
-.username input:focus ~ label{
-    width: 100%;
-}
 
 .iniciar {
-    width: 100%;
+    width: 90%;
     height: 50px;
     border: 1px solid;
     background: rgba(125, 173, 182, 0.911);
@@ -90,7 +58,7 @@ form .username{
     margin-bottom: 10px;
 }
 
-button:hover{
+.iniciar :hover{
     border-color: #82d1cd;
     transition: .5s;
     transform:scale(1.1);
@@ -112,18 +80,22 @@ nav h1{
     color: white;
     font-size: 30px;
 }
-ul li{
+.btn{
     display: inline-block;
-    padding: 0px 20px;
+    padding: 0px 10px;
+    background: none;
+    border: none;
+    
 }
-nav a{
+nav .btn{
     color: white;
     text-decoration: none;
-    margin-right: 15px;
+    margin-right: 10px;
+    font-size: 19px;
 }
 
-nav a:hover{
-    color: rgb(100, 233, 238);
+nav .btn:hover{
+    color: rgb(100, 187, 238);
 }
 
 .container {
@@ -163,6 +135,12 @@ nav a:hover{
     cursor: pointer;
     outline: none;
     margin-bottom: 10px;
+}
+
+.edit:hover{
+    border-color: #82d1cd;
+    transition: .5s;
+    transform:scale(1.1);
 }
 
 .card-wrapper {
