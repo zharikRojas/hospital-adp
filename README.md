@@ -8,8 +8,13 @@
 ## Configuración de base de datos
 
 1. Ejecute el archivo `hospital.sql` que se encuentra en esta carpeta en su base de datos.
-2. Modifique el archivo `config.js` y agregue los datos de su usuario y contraseña.
-3. Puede visualizar el modelo entidad relacion de la base de datos en `Modelo-Entidad-Relacion.png`.
+2. Ejecute el siguiente comando en su base de datos cambiando el nombre del usuario si es diferente a root y con la contraseña del usuario que esta utilizando 
+```
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Password';
+FLUSH PRIVILEGES;
+```
+3. Modifique el archivo `config.js` y agregue los datos de su usuario y contraseña.
+4. Puede visualizar el modelo entidad relacion de la base de datos en `Modelo-Entidad-Relacion.png`.
 
 ## Configuración del proyecto
 
